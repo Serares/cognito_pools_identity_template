@@ -26,3 +26,15 @@ Parameters:
     Default: ""
 
 Resources:
+  PreToken:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub ${AWS::StackName}-PreToken
+      CodeUri: PreToken/
+  PreTokenPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !GetAtt PreToken.Arn
+      Principal: cognito-idp.amazonaws.com
+      Action: lambda:InvokeFunction
+      SourceArn: !Ref UserPoolArn
