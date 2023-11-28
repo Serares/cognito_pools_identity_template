@@ -1,0 +1,4 @@
+node_modules
+*-env.*
+cognito-web/web-app/public/cognito-sdk.js
+.aws-sam
